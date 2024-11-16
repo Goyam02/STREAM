@@ -9,3 +9,4 @@ Welcome to Stream, your go-to OTT platform for streaming TV shows, movies, and e
 - **User-Friendly Interface**: Stream offers an intuitive interface that makes navigation and content discovery effortless.
 - **Multi-Device Support**: Watch and listen on-the-go with our mobile apps or at home through our web platform.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/174f0eae-29d3-40f4-846a-1a7ff3b93b57/deploy-status)](https://app.netlify.com/sites/stream12/deploys)
