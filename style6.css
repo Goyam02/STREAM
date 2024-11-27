@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #090909;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_ul {
+    display: flex;
+    align-items: center;
+}
+
+.logo_ul img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.navigation-buttons {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-buttons li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navigation-buttons li a:hover {
+    color: #007bff;
+}
+
+.user-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+main {
+    padding: 20px;
+}
+
+.payment-subscription-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+.subscription-plan, .available-plans, .payment-method, .payment-history, .qr-scanner {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.plan-card h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.plan-card p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.btn-select, .btn-save {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-select:hover, .btn-save:hover {
+    background-color: #0056b3;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

@@ -1,218 +1,167 @@
-let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
-let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
-let cards = document.getElementsByClassName('cards')[0];
-let search = document.getElementsByClassName('search')[0];
-let search_input = document.getElementById('search_input');
-//error
-left_btn.addEventListener('click', () => {
-    cards.scrollLeft -= 140;
-});
 
-right_btn.addEventListener('click', () => {
-    cards.scrollLeft += 140;
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const search = document.querySelector('.search');
+    const search_input = document.getElementById('search_input');
 
-let json_url = "movie.json";
+    search.style.visibility = "hidden";
+    search.style.opacity = 0;
 
-fetch(json_url)
-    .then(response => response.json())
-    .then((data) => {
-        data.forEach((ele) => {
-            let { name, imdb, date, sposter, bposter, genre, url } = ele;
+    fetch('movie.json')
+        .then(response => response.json())
+        .then(data => {
+            populateSearchResults(data);
+
+            search_input.addEventListener('keyup', () => {
+                let filter = search_input.value.toUpperCase();
+                let a = search.getElementsByTagName('a');
+                let hasVisibleItems = false;
+
+                for (let index = 0; index < a.length; index++) {
+                    let b = a[index].getElementsByClassName('cont')[0];
+                    let textValue = b.textContent || b.innerText;
+
+                    if (textValue.toUpperCase().indexOf(filter) > -1) {
+                        a[index].style.display = "flex";
+                        hasVisibleItems = true;
+                    } else {
+                        a[index].style.display = "none";
+                    }
+                }
+
+                if (hasVisibleItems) {
+                    search.style.visibility = "visible";
+                    search.style.opacity = 1;
+                } else {
+                    search.style.visibility = "hidden";
+                    search.style.opacity = 0;
+                }
+
+                if (search_input.value.trim() === "") {
+                    search.style.visibility = "hidden";
+                    search.style.opacity = 0;
+                }
+            });
+        });
+
+    function populateSearchResults(data) {
+        search.innerHTML = '';
+
+        data.forEach((element) => {
+            let { name, imdb, date, sposter, genre, url } = element;
             let card = document.createElement("a");
             card.classList.add("card");
             card.href = url;
             card.innerHTML = `
-                <img src="${sposter}" alt="${name}" class="posters">
-                <div class="rest_card">
-                    <img src="${bposter}">
-                    <div class="cont">
-                        <h4>${name}</h4>
-                        <div class="sub">
-                            <p>${date} ‧ ${genre} ‧ 2 seasons</p>
-                            <h3><span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</h3>
-                        </div>
-                    </div>
+                <img src="${sposter}">
+                <div class="cont">
+                    <h3>${name}</h3>
+                    <p>${date}, ${genre} <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</p>
                 </div>
-            `
+            `;
+            search.appendChild(card);
         });
-
-        document.getElementById("title").innerText = data[0].name;
-        document.getElementById("gen").innerText = data[0].genre;
-        document.getElementById("date").innerText = data[0].date;
-        document.getElementById("rate").innerHTML = `<span>IMDB</span><i class="bi bi-star-fill"></i>${data[0].imdb}`;
-
-        populateSearchResults(data);
-    });
-
-function populateSearchResults(data) {
-
-    search.innerHTML = '';
-
-    data.forEach((element) => {
-        let { name, imdb, date, sposter, genre, url } = element;
-        let card = document.createElement("a");
-        card.classList.add("card");
-        card.href = url;
-        card.innerHTML = `
-            <img src="${sposter}">
-            <div class="cont">
-                <h3>${name}</h3>
-                <p>${date}, ${genre} <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</p>
-            </div>
-        `
-        search.appendChild(card);
-    });
-
-    search_input.addEventListener('keyup', () => {
-        let filter = search_input.value.toUpperCase();
-        let a = search.getElementsByTagName('a');
-        for (let index = 0; index < a.length; index++) {
-            let b = a[index].getElementsByClassName('cont')[0];
-            let textValue = b.textContent || b.innerText;
-
-            if (textValue.toUpperCase().indexOf(filter) > -1) {
-                a[index].style.display = "flex";
-                search.style.visibility = "visible";
-                search.style.opacity = 1;
-            } else {
-                a[index].style.display = "none";
-            }
-        }
-
-        // error
-        if (search_input.value === "") {
-            search.style.visibility = "hidden";
-            search.style.opacity = 0;
-        }
-    });
-}
-
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
-    const taDumSound = document.getElementById('ta-dum-sound');
-    
-    taDumSound.currentTime = 0;
-    
-    taDumSound.play().catch(error => {
-        console.error('Failed to play sound:', error);
+    const popularSwiper = new Swiper('.popular-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.popular-next',
+            prevEl: '.popular-prev',
+        },
     });
+
+    const trendingSwiper = new Swiper('.trending-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.trending-next',
+            prevEl: '.trending-prev',
+        },
+    });
+    const actionSwiper = new Swiper('.action-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.action-next',
+            prevEl: '.action-prev',
+        },
+    });
+
+
+    const horrorSwiper = new Swiper('.horror-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.horror-next',
+            prevEl: '.horror-prev',
+        },
+    });
+
+    const romanticSwiper = new Swiper('.romantic-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.romantic-next',
+            prevEl: '.romantic-prev',
+        },
+    });
+
+    const fantasySwiper = new Swiper('.fantasy-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.fantasy-next',
+            prevEl: '.fantasy-prev',
+        },
+    });
+
+    const ussitcomsSwiper = new Swiper('.ussitcoms-swiper', {
+        slidesPerView: 7,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.ussitcoms-next',
+            prevEl: '.ussitcoms-prev',
+        },
+    });
+
 });
 
+function selectPlan(planName, price) {
+    const confirmation = confirm(`You have selected the ${planName} plan for $${price}/month. Proceed to payment?`);
+    if (confirmation) {
+        processPayment(planName, price);
+    }
+}
+
+function processPayment(planName, price) {
+    console.log(`Processing payment for ${planName} plan at $${price}/month...`);
+
+    setTimeout(() => {
+        alert(`Payment successful! You are now subscribed to the ${planName} plan.`);
+    }, 2000);
+}
 
 
+function onScanSuccess(decodedText, decodedResult) {
+    console.log(`Code matched = ${decodedText}`, decodedResult);
+    document.getElementById('qr-reader-results').innerText = `Scanned Code: ${decodedText}`;
+}
+
+function onScanFailure(error) {
+    console.warn(`Code scan error = ${error}`);
+}
+
+let html5QrcodeScanner = new Html5QrcodeScanner(
+    "qr-reader", { fps: 10, qrbox: 250 });
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const animatedElements = document.querySelectorAll('.fade-in');
-
-//     const handleScroll = () => {
-//         animatedElements.forEach(element => {
-//             const rect = element.getBoundingClientRect();
-//             if (rect.top < window.innerHeight) {
-//                 element.classList.add('visible');
-//             }
-//         });
-//     };
-
-//     window.addEventListener('scroll', handleScroll);
-
-//     // Initial check in case elements are already in view
-//     handleScroll();
-// });
-
-// let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
-// let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
-// let cards = document.getElementsByClassName('cards')[0];
-// let search = document.getElementsByClassName('search')[0];
-// let search_input = document.getElementById('search_input');
-
-// left_btn.addEventListener('click', () => {
-//     cards.scrollLeft -= 140;
-// });
-
-// right_btn.addEventListener('click', () => {
-//     cards.scrollLeft += 140;
-// });
-
-// let json_url = "movie.json";
-
-// fetch(json_url)
-//     .then(response => response.json())
-//     .then((data) => {
-//         // Display initial movie cards
-//         data.forEach((ele) => {
-//             let { name, imdb, date, sposter, bposter, genre, url } = ele;
-//             let card = document.createElement("a");
-//             card.classList.add("card", "fade-in"); // Add fade-in class here
-//             card.href = url;
-//             card.innerHTML = `
-//                 <img src="${sposter}" alt="${name}" class="posters">
-//                 <div class="rest_card">
-//                     <img src="${bposter}">
-//                     <div class="cont">
-//                         <h4>${name}</h4>
-//                         <div class="sub">
-//                             <p>${date} ‧ ${genre} ‧ 2 seasons</p>
-//                             <h3><span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</h3>
-//                         </div>
-//                     </div>
-//                 </div>
-//             `;
-//             cards.appendChild(card);
-//         });
-
-//         // Display the first movie details
-//         document.getElementById("title").innerText = data[0].name;
-//         document.getElementById("gen").innerText = data[0].genre;
-//         document.getElementById("date").innerText = data[0].date;
-//         document.getElementById("rate").innerHTML = `<span>IMDB</span><i class="bi bi-star-fill"></i>${data[0].imdb}`;
-
-//         // Populate search results
-//         populateSearchResults(data);
-//     });
-
-// function populateSearchResults(data) {
-//     // Clear previous search results
-//     search.innerHTML = '';
-
-//     data.forEach((element) => {
-//         let { name, imdb, date, sposter, genre, url } = element;
-//         let card = document.createElement("a");
-//         card.classList.add("card", "fade-in"); // Add fade-in class here
-//         card.href = url;
-//         card.innerHTML = `
-//             <img src="${sposter}">
-//             <div class="cont">
-//                 <h3>${name}</h3>
-//                 <p>${date}, ${genre} <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</p>
-//             </div>
-//         `;
-//         search.appendChild(card);
-//     });
-
-//     // Add search functionality
-//     search_input.addEventListener('keyup', () => {
-//         let filter = search_input.value.toUpperCase();
-//         let a = search.getElementsByTagName('a');
-
-//         // Clear previous search results
-//         for (let index = 0; index < a.length; index++) {
-//             let b = a[index].getElementsByClassName('cont')[0];
-//             let textValue = b.textContent || b.innerText;
-
-//             if (textValue.toUpperCase().indexOf(filter) > -1) {
-//                 a[index].style.display = "flex";
-//                 search.style.visibility = "visible";
-//                 search.style.opacity = 1;
-//             } else {
-//                 a[index].style.display = "none";
-//             }
-//         }
-
-//         // Hide search results if input is empty
-//         if (search_input.value === "") {
-//             search.style.visibility = "hidden";
-//             search.style.opacity = 0;
-//         }
-//     });
-// }
