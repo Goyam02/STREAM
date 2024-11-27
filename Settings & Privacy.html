@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings & Privacy - Stream</title>
+    <link rel="stylesheet" href="style5.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo_ul">
+                <a href="index.html"><img src="IMAGES/logo.png" alt="STREAM"></a>
+                <ul class="navigation-buttons">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="movies.html">Movies</a></li>
+                    <li><a href="tvshows.html">TV Shows</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="musicindex.html">Music</a></li>
+                    <li><a href="help.html">Help & Support</a></li>
+                </ul>
+                <img src="IMAGES/user.png" class="user-pic">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Settings & Privacy Section -->
+    <main>
+        <section class="settings-privacy-section">
+            <h1>Settings & Privacy</h1>
+
+            <!-- Account Settings -->
+            <div class="settings-category">
+                <h2>Account Settings</h2>
+                <form action="/update-account-settings" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter new username" value="stream_user">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" value="user@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">New Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter a new password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                    </div>
+
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Privacy Settings -->
+            <div class="settings-category">
+                <h2>Privacy Settings</h2>
+                <form action="/update-privacy-settings" method="POST">
+                    <div class="form-group">
+                        <label for="email-notifications">Email Notifications</label>
+                        <select id="email-notifications" name="email-notifications">
+                            <option value="yes">Enable</option>
+                            <option value="no">Disable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profile-visibility">Profile Visibility</label>
+                        <select id="profile-visibility" name="profile-visibility">
+                            <option value="public">Public</option>
+                            <option value="private">Private</option>
+                            <option value="friends">Only Friends</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ad-preferences">Ad Preferences</label>
+                        <select id="ad-preferences" name="ad-preferences">
+                            <option value="personalized">Personalized</option>
+                            <option value="non-personalized">Non-Personalized</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-save">Save Privacy Settings</button>
+                </form>
+            </div>
+
+            <!-- Delete Account -->
+            <div class="settings-category delete-account">
+                <h2>Delete Account</h2>
+                <p>If you want to permanently delete your account, please note this action cannot be undone.</p>
+                <button class="btn-delete">Delete Account</button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Stream OTT Platform. All rights reserved.</p>
+    </footer>
+<script src="app2.js"></script>
+</body>
+</html>

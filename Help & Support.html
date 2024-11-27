@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - Stream</title>
+    <link rel="stylesheet" href="stylehelp.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo_ul">
+                <a href="index.html"><img src="IMAGES/logo.png" alt="STREAM"></a>
+                <ul class="navigation-buttons">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="movies.html">Movies</a></li>
+                    <li><a href="tvshows.html">TV Shows</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="musicindex.html">Music</a></li>
+                    <li><a href="help.html" class="active">Help & Support</a></li>
+                </ul>
+                <img src="IMAGES/user.png" class="user-pic">
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content of Help & Support -->
+    <main>
+        <section class="support-hero">
+            <h1>Help & Support</h1>
+            <p>Find answers to common questions, troubleshooting tips, and contact options.</p>
+        </section>
+
+        <!-- Account Management Section -->
+        <section class="account-management">
+            <h2>Account Management</h2>
+            <div class="faq-item">
+                <h3>How do I reset my password?</h3>
+                <p>If you forgot your password, click on the 'Forgot Password' link on the login page. Follow the instructions sent to your email to reset your password.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can I update my account information?</h3>
+                <p>To update your account details, go to your profile settings page. You can edit your name, email, and other personal information there.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I cancel my subscription?</h3>
+                <p>If you'd like to cancel your subscription, please visit the 'Subscription' section in your account settings and follow the instructions to cancel.</p>
+            </div>
+        </section>
+
+        <!-- Billing Section -->
+        <section class="billing">
+            <h2>Billing</h2>
+            <div class="faq-item">
+                <h3>How do I update my payment method?</h3>
+                <p>To update your payment method, go to the 'Billing' section in your account settings and follow the instructions to add or update your payment details.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why was my payment declined?</h3>
+                <p>There could be several reasons for a declined payment. Please check with your bank or payment provider for more details.</p>
+            </div>
+        </section>
+
+        <!-- Device Support Section -->
+        <section class="device-support">
+            <h2>Device Support</h2>
+            <div class="faq-item">
+                <h3>What devices are supported?</h3>
+                <p>Our service is available on a wide range of devices including smartphones, tablets, smart TVs, and web browsers.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I install the app on my device?</h3>
+                <p>Visit the app store on your device and search for 'Stream'. Follow the instructions to download and install the app.</p>
+            </div>
+        </section>
+
+        <!-- Streaming Issues Section -->
+        <section class="streaming-issues">
+            <h2>Streaming Issues</h2>
+            <div class="faq-item">
+                <h3>Why is my video buffering?</h3>
+                <p>Buffering can occur due to a slow internet connection. Try restarting your router or checking your internet speed.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I improve video quality?</h3>
+                <p>Ensure you have a stable internet connection and adjust the video quality settings in the app.</p>
+            </div>
+        </section>
+
+        <!-- Contact Support Section -->
+        <section class="contact-support">
+            <h2>Contact Support</h2>
+            <p>If you can't find the answers you're looking for, feel free to reach out to us directly.</p>
+            <div class="contact-options">
+                <div class="contact-item">
+                    <h3>Email Support</h3>
+                    <p>Email us at <a href="mailto:support@stream.com">support@stream.com</a>. We aim to respond within 24 hours.</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Phone Support</h3>
+                    <p>Call us at <strong>9988767675</strong> for immediate assistance during business hours.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section class="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>If you're facing issues with streaming, try the following steps:</p>
+            <ul>
+                <li>Check your internet connection to ensure it's stable.</li>
+                <li>Try restarting the app or refreshing the page.</li>
+                <li>If the issue persists, clear your browser's cache and cookies.</li>
+                <li>Make sure your device's operating system and app are up to date.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Stream OTT Platform. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item h3');
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
