@@ -5,10 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     planButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Deselect any previously selected plan
             planButtons.forEach(btn => btn.parentElement.classList.remove('selected'));
-            
-            // Select the current plan
             this.parentElement.classList.add('selected');
             selectedPlan = this.parentElement;
         });
@@ -25,19 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const planAmount = selectedPlan.querySelector('p').innerText.replace('/month', '').replace('$', '');
 
             const options = {
-                key: '[REDACTED:Generic API Key]', // Replace with your Razorpay API key
-                amount: parseFloat(planAmount) * 100, // Amount in paise
-                currency: "USD", // Change currency if needed
+                key: 'YOUR_RAZORPAY_API_KEY', // Replace with your Razorpay API key
+                amount: parseFloat(planAmount) * 100,
+                currency: "USD",
                 name: "Stream Subscription",
                 description: `Subscription Plan: ${planName}`,
                 handler: function(response) {
                     const paymentId = response.razorpay_payment_id;
                     alert(`Payment successful! Payment ID: ${paymentId}`);
-                    // You can redirect or perform other actions here
                 },
                 prefill: {
-                    name: "John Doe", // Replace with actual user data
-                    email: "john.doe@example.com", // Replace with actual user data
+                    name: "John Doe",
+                    email: "john.doe@example.com",
                 },
                 theme: {
                     color: "#007bff"
